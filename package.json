@@ -19,9 +19,18 @@
   },
   "homepage": "https://github.com/ChrisGitmed/docusign-practice-v2#readme",
   "dependencies": {
+    "docusign-esign": "^5.10.0",
+    "docxtemplater": "^3.22.2",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
-    "morgan": "^1.10.0"
+    "express-session": "^1.17.2",
+    "helmet": "^4.6.0",
+    "memorystore": "^1.6.6",
+    "moment": "^2.29.1",
+    "morgan": "^1.10.0",
+    "passport": "^0.4.1",
+    "pizzip": "^3.0.6",
+    "validator": "^13.6.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.7"
