@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/ChrisGitmed/docusign-practice-v2#readme",
   "dependencies": {
+    "body-parser": "^1.19.0",
     "docusign-esign": "^5.10.0",
     "docxtemplater": "^3.22.2",
     "dotenv": "^10.0.0",

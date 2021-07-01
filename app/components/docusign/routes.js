@@ -10,7 +10,18 @@ const Docxtemplater = require('docxtemplater');
 const path = require('path');
 const fs = require('fs');
 
+
+router.post('/send-OFF', (req, res, next) => {
+    res.status(200).json('done')
+})
+
 router.post('/send', async (req, res, next) => {
+    // GET req.user AND AUTHORIZE
+    console.log('req.user: ', req.user)
+
+
+
+
 
     /**** Pre-processing the file ****/
     /* Load the docx as binary content */
@@ -41,16 +52,11 @@ router.post('/send', async (req, res, next) => {
     const docsPath = path.resolve(__dirname, '../../documents');
     const doc1File = 'test2.docx'
 
-    /**
-     * Create the envelope
-     */
     /**** Creating the controller ****/
     const controller = async (req, res) => {
         // Step 1. Check the token -- TODO
-
         // Step 2. Call the worker method
         const { body } = req;
-        console.log('Body: ', body)
         const signerEmail = validator.escape(body.signerEmail);
         const signerName = validator.escape(body.signerName);
         const ccEmail = validator.escape(body.ccEmail);
@@ -70,29 +76,25 @@ router.post('/send', async (req, res, next) => {
             envelopeArgs: envelopeArgs
         }
 
-        let results;
         try {
-            results = await worker(args)
+            const results = await worker(args)
+            return results;
         }
         catch (e) {
             errorHandler(e)
         }
-
     }
 
     const worker = (args) => {
         console.log('args: ', args)
     }
 
-    let result;
     try {
-        console.log('fired: ', req.body)
-        result = await controller(req, res);
-        res.status(200).json(result);
+        // const result = await controller(req, res);
+        res.status(200).json('done');
     } catch (e) {
         errorHandler(e)
     }
-
 });
 
 router.get('/status', (req, res, next) => {
