@@ -91,7 +91,8 @@ router.post('/send', async (req, res, next) => {
 
     try {
         // const result = await controller(req, res);
-        res.status(200).json('done');
+        // res.status(200).json('done');
+        res.redirect(301, process.env.REDIRECT_URI)
     } catch (e) {
         errorHandler(e)
     }
